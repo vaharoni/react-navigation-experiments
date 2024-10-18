@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "react-nav",
-    "slug": "react-nav",
+    "name": "react-nav-test",
+    "slug": "react-nav-test",
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.example.with-new-arch"
+      "bundleIdentifier": "com.lycheestudio.react-nav-test"
     },
     "android": {
-      "package": "com.example.withnewarch"
+      "package": "com.lycheestudio.react_nav_test"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -23,7 +23,18 @@
             "newArchEnabled": true
           }
         }
+      ],
+      [
+        "expo-dev-launcher",
+        {
+          "launchMode": "most-recent"
+        }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "5864168a-bc70-41fd-99a2-f2ad49e5bef2"
+      }
+    }
   }
 }
