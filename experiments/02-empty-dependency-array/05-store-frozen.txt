@@ -1,0 +1,141 @@
+- This pretty much behaves in the most unsurprising way
+
+START
+
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": undefined, "where": "+useLayoutEffect HOME mounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": undefined, "where": "+useEffect HOME mounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": undefined, "where": "+useFocusEffect HOME mounted"}
+
+Store
+
+ LOG  RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+ LOG  Rendered STORE: 687
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": 687, "where": "+useLayoutEffect STORE mounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": 687, "where": "+useEffect STORE mounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": 687, "where": "+useFocusEffect STORE mounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": undefined, "where": "-useFocusEffect HOME unmounted"}
+
+Push
+
+LOG  RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+ LOG  Rendered STORE: 965
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": 965, "where": "+useLayoutEffect STORE mounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": 965, "where": "+useEffect STORE mounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": 965, "where": "+useFocusEffect STORE mounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": 687, "where": "-useFocusEffect STORE unmounted"}
+
+Push
+
+ LOG  RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+ LOG  Rendered STORE: 414
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": 414, "where": "+useLayoutEffect STORE mounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": 414, "where": "+useEffect STORE mounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": 414, "where": "+useFocusEffect STORE mounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": 965, "where": "-useFocusEffect STORE unmounted"}
+
+Push
+
+ LOG  RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+ LOG  Rendered STORE: 777
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": 777, "where": "+useLayoutEffect STORE mounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": 777, "where": "+useEffect STORE mounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": 777, "where": "+useFocusEffect STORE mounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": 414, "where": "-useFocusEffect STORE unmounted"}
+
+Push
+
+ LOG  RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+ LOG  Rendered STORE: 421
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": 421, "where": "+useLayoutEffect STORE mounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": 421, "where": "+useEffect STORE mounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": 421, "where": "+useFocusEffect STORE mounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": 777, "where": "-useFocusEffect STORE unmounted"}
+
+Internal
+
+ LOG  RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+ LOG  Rendered STORE: 421
+
+Internal
+
+ LOG  RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+ LOG  Rendered STORE: 421
+
+External
+
+ LOG  RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+ LOG  Rendered STORE: 421
+
+External
+
+ LOG  RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+ LOG  Rendered STORE: 421
+
+Back (stack state: 687->965->414->777->421)
+
+ LOG  RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+ LOG  Rendered STORE: 777
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": 421, "where": "-useLayoutEffect STORE unmounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": 421, "where": "-useEffect STORE unmounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": 421, "where": "-useFocusEffect STORE unmounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": 777, "where": "+useFocusEffect STORE mounted"}
+
+Back (stack state: 687->965->414->777)
+
+ LOG  RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+ LOG  Rendered STORE: 414
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": 777, "where": "-useLayoutEffect STORE unmounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": 777, "where": "-useEffect STORE unmounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": 777, "where": "-useFocusEffect STORE unmounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": 414, "where": "+useFocusEffect STORE mounted"}
+
+Home (stack state: 687->965->414)
+
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": 687, "where": "-useLayoutEffect STORE unmounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": 965, "where": "-useLayoutEffect STORE unmounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": 414, "where": "-useLayoutEffect STORE unmounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": 687, "where": "-useEffect STORE unmounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": 965, "where": "-useEffect STORE unmounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": 414, "where": "-useEffect STORE unmounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": 414, "where": "-useFocusEffect STORE unmounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": undefined, "where": "+useFocusEffect HOME mounted"}
+

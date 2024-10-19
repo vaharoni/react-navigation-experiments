@@ -1,0 +1,174 @@
+- Using params makes no difference compared to the basic scenario
+
+START
+
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": undefined, "where": "+useLayoutEffect HOME mounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": undefined, "where": "+useEffect HOME mounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": undefined, "where": "+useFocusEffect HOME mounted"}
+
+Details
+
+ LOG  RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+ LOG  Rendered DETAILS: 525
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": {"id": 1}, "where": "+useLayoutEffect DETAILS mounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": {"id": 1}, "where": "+useEffect DETAILS mounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": {"id": 1}, "where": "+useFocusEffect DETAILS mounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": undefined, "where": "-useFocusEffect HOME unmounted"}
+
+ Details + 1
+
+ LOG  RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+ LOG  Rendered DETAILS: 420
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": {"id": 2}, "where": "+useLayoutEffect DETAILS mounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": {"id": 2}, "where": "+useEffect DETAILS mounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": {"id": 2}, "where": "+useFocusEffect DETAILS mounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": {"id": 1}, "where": "-useFocusEffect DETAILS unmounted"}
+
+Details - 1: a new screen is pushed, and is animated left-to-right. The fact { id: 1 } is already somewhere in the stack does nothing (it's different reference anyways)
+
+ LOG  RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+ LOG  Rendered DETAILS: 521
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": {"id": 1}, "where": "+useLayoutEffect DETAILS mounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": {"id": 1}, "where": "+useEffect DETAILS mounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": {"id": 1}, "where": "+useFocusEffect DETAILS mounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": {"id": 2}, "where": "-useFocusEffect DETAILS unmounted"}
+
+Details + 1
+
+ LOG  RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+ LOG  Rendered DETAILS: 146
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": {"id": 2}, "where": "+useLayoutEffect DETAILS mounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": {"id": 2}, "where": "+useEffect DETAILS mounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": {"id": 2}, "where": "+useFocusEffect DETAILS mounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": {"id": 1}, "where": "-useFocusEffect DETAILS unmounted"}
+
+Details ==
+
+ LOG  RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+ LOG  Rendered DETAILS: 876
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": {"id": 2}, "where": "+useLayoutEffect DETAILS mounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": {"id": 2}, "where": "+useEffect DETAILS mounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": {"id": 2}, "where": "+useFocusEffect DETAILS mounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": {"id": 2}, "where": "-useFocusEffect DETAILS unmounted"}
+
+Details == : a new screen is pushed due to the use of push, even when the object reference is exactly the same
+
+ LOG  RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+ LOG  Rendered DETAILS: 289
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": {"id": 2}, "where": "+useLayoutEffect DETAILS mounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": {"id": 2}, "where": "+useEffect DETAILS mounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": {"id": 2}, "where": "+useFocusEffect DETAILS mounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": {"id": 2}, "where": "-useFocusEffect DETAILS unmounted"}
+ 
+DETAILS ø
+
+ LOG  RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+ LOG  Rendered DETAILS: 228
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": undefined, "where": "+useLayoutEffect DETAILS mounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": undefined, "where": "+useEffect DETAILS mounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": undefined, "where": "+useFocusEffect DETAILS mounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": {"id": 2}, "where": "-useFocusEffect DETAILS unmounted"}
+
+DETAILS ø
+
+ LOG  RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+ LOG  Rendered DETAILS: 255
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": undefined, "where": "+useLayoutEffect DETAILS mounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": undefined, "where": "+useEffect DETAILS mounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": undefined, "where": "+useFocusEffect DETAILS mounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": undefined, "where": "-useFocusEffect DETAILS unmounted"}
+
+ BACK (screen goes back to 228)
+
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": undefined, "where": "-useLayoutEffect DETAILS unmounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": undefined, "where": "-useEffect DETAILS unmounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": undefined, "where": "-useFocusEffect DETAILS unmounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": undefined, "where": "+useFocusEffect DETAILS mounted"}
+
+BACK (screen goes back to 289)
+
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": undefined, "where": "-useLayoutEffect DETAILS unmounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": undefined, "where": "-useEffect DETAILS unmounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": undefined, "where": "-useFocusEffect DETAILS unmounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": {"id": 2}, "where": "+useFocusEffect DETAILS mounted"} 
+
+BACK (screen goes back to 876)
+
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": {"id": 2}, "where": "-useLayoutEffect DETAILS unmounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": {"id": 2}, "where": "-useEffect DETAILS unmounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": {"id": 2}, "where": "-useFocusEffect DETAILS unmounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": {"id": 2}, "where": "+useFocusEffect DETAILS mounted"}
+
+HOME (stack state: 525->420->521->146->876, so we expect 5 unmount useLayoutEffect + 5 unmount useEffect + 1 unmount useFocusEffect + 1 mount useFocusEffect = 12 events)
+
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": {"id": 1}, "where": "-useLayoutEffect DETAILS unmounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": {"id": 2}, "where": "-useLayoutEffect DETAILS unmounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": {"id": 1}, "where": "-useLayoutEffect DETAILS unmounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": {"id": 2}, "where": "-useLayoutEffect DETAILS unmounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": {"id": 2}, "where": "-useLayoutEffect DETAILS unmounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": {"id": 1}, "where": "-useEffect DETAILS unmounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": {"id": 2}, "where": "-useEffect DETAILS unmounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": {"id": 1}, "where": "-useEffect DETAILS unmounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": {"id": 2}, "where": "-useEffect DETAILS unmounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": {"id": 2}, "where": "-useEffect DETAILS unmounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": {"id": 2}, "where": "-useFocusEffect DETAILS unmounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": undefined, "where": "+useFocusEffect HOME mounted"}

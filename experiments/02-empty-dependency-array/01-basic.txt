@@ -1,0 +1,100 @@
+- This behaves exactly the same as without a dependency array
+
+START
+
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": undefined, "where": "+useLayoutEffect HOME mounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": undefined, "where": "+useEffect HOME mounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": undefined, "where": "+useFocusEffect HOME mounted"}
+
+Basic
+
+ LOG  RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+ LOG  Rendered BASIC: 404
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": 404, "where": "+useLayoutEffect BASIC mounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": 404, "where": "+useEffect BASIC mounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": 404, "where": "+useFocusEffect BASIC mounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": undefined, "where": "-useFocusEffect HOME unmounted"}
+
+Navigate
+
+Does nothing.
+
+Push
+
+ LOG  RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+ LOG  Rendered BASIC: 804
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": 804, "where": "+useLayoutEffect BASIC mounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": 804, "where": "+useEffect BASIC mounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": 804, "where": "+useFocusEffect BASIC mounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": 404, "where": "-useFocusEffect BASIC unmounted"}
+
+Push
+ LOG  RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+ LOG  Rendered BASIC: 202
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": 202, "where": "+useLayoutEffect BASIC mounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": 202, "where": "+useEffect BASIC mounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": 202, "where": "+useFocusEffect BASIC mounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": 804, "where": "-useFocusEffect BASIC unmounted"}
+
+ Push
+ LOG  RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+ LOG  Rendered BASIC: 780
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": 780, "where": "+useLayoutEffect BASIC mounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": 780, "where": "+useEffect BASIC mounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": 780, "where": "+useFocusEffect BASIC mounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": 202, "where": "-useFocusEffect BASIC unmounted"}
+
+Back (stack state prior: 404->804->202->780)
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": 780, "where": "-useLayoutEffect BASIC unmounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": 780, "where": "-useEffect BASIC unmounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": 780, "where": "-useFocusEffect BASIC unmounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": 202, "where": "+useFocusEffect BASIC mounted"}
+
+Back (stack state prior: 404->804->202)
+
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": 202, "where": "-useLayoutEffect BASIC unmounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": 202, "where": "-useEffect BASIC unmounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": 202, "where": "-useFocusEffect BASIC unmounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": 804, "where": "+useFocusEffect BASIC mounted"}
+
+Home (stack state prior: 404->804)
+
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": 404, "where": "-useLayoutEffect BASIC unmounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": 804, "where": "-useLayoutEffect BASIC unmounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": 404, "where": "-useEffect BASIC unmounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": 804, "where": "-useEffect BASIC unmounted"}
+ LOG  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ LOG  {"params": 804, "where": "-useFocusEffect BASIC unmounted"}
+ LOG  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ LOG  {"params": undefined, "where": "+useFocusEffect HOME mounted"}

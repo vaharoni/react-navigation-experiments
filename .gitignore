@@ -17,3 +17,4 @@ ios/
 android/
 *.ipa
 *.apk
+tmp/
